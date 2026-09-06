@@ -52,7 +52,7 @@ export const projects: Project[] = [
     year: "2025",
     description:
       "A productivity platform that seamlessly converts meeting recordings into structured notes using AI.",
-    technologies: ["Next.js", "TypeScript"],
+    technologies: ["Next.js", "TypeScript", "MongoDB"],
     image: "/projects/motionai/cover.png",
     github: "https://github.com/amitKhayargoli/MotionAI",
     featured: true,
@@ -65,9 +65,10 @@ export const projects: Project[] = [
     year: "2025",
     description:
       "A price tracking tool for Daraz that monitors product prices and notifies users of price drops.",
-    technologies: ["Next.js", "TypeScript", "Firecrawl"],
+    technologies: ["Next.js", "TypeScript", "Firecrawl", "Supabase"],
     image: "/projects/priceTracker/cover.png",
     github: "https://github.com/amitKhayargoli/DealDrop",
+    link: "https://dealdrop-v1.vercel.app",
     featured: true,
   },
 ];

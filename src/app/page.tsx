@@ -2,6 +2,7 @@
 
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { VinylPlayer } from "@/components/playground/VinylPlayer";
 import { Hero } from "@/components/hero/Hero";
 import { About } from "@/components/about/About";
 import { ProjectGrid } from "@/components/work/ProjectGrid";
@@ -29,6 +30,9 @@ export default function Home() {
       </main>
 
       <Footer />
+
+      {/* Hidden easter egg: vinyl music player */}
+      <VinylPlayer />
 
       <EasterEggManager />
     </>
