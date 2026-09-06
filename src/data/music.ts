@@ -10,7 +10,7 @@ export interface MusicEntry {
   title: string;
   artist: string;
   embedUrl: string;
-  /** iframe height in px — 152 for tracks, 352 for playlists */
+  /** iframe height in px - 152 for tracks, 352 for playlists */
   height?: number;
 }
 
@@ -22,7 +22,7 @@ export const music: MusicEntry[] = [
     height: 152,
   },
   {
-    title: "Something Stupid (From \"Better Call Saul\")",
+    title: 'Something Stupid (From "Better Call Saul")',
     artist: "Lola Marsh",
     embedUrl: "https://open.spotify.com/track/29EdNlJQqStWhNkSGpkuFQ",
     height: 152,

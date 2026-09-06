@@ -9,7 +9,7 @@ interface SpotifyEmbedController {
   loadUri: (uri: string) => void;
   addListener: (
     event: string,
-    cb: (e: { data: SpotifyPlaybackData }) => void
+    cb: (e: { data: SpotifyPlaybackData }) => void,
   ) => void;
   destroy?: () => void;
 }
@@ -26,7 +26,7 @@ interface SpotifyIframeApi {
   createController: (
     element: HTMLElement,
     options: { uri?: string; height?: number },
-    callback: (controller: SpotifyEmbedController) => void
+    callback: (controller: SpotifyEmbedController) => void,
   ) => void;
 }
 
@@ -40,7 +40,7 @@ declare global {
 /** "https://open.spotify.com/embed/track/ID" -> "spotify:track:ID" */
 function toSpotifyUri(url: string): string {
   const match = url.match(
-    /open\.spotify\.com\/(?:embed\/)?(track|album|playlist|episode|show)\/([A-Za-z0-9]+)/
+    /open\.spotify\.com\/(?:embed\/)?(track|album|playlist|episode|show)\/([A-Za-z0-9]+)/,
   );
   return match ? `spotify:${match[1]}:${match[2]}` : url;
 }
@@ -87,7 +87,7 @@ export function VinylPlayer() {
       const container = embedContainerRef.current;
       if (!container || cancelled) return;
 
-      // Fresh mount node each time — the API swaps it for an iframe
+      // Fresh mount node each time - the API swaps it for an iframe
       const mount = document.createElement("div");
       container.replaceChildren(mount);
 
@@ -108,7 +108,7 @@ export function VinylPlayer() {
             setPosition(e.data.position);
             setDuration(e.data.duration);
           });
-        }
+        },
       );
     };
 
@@ -178,7 +178,7 @@ export function VinylPlayer() {
           />
         </svg>
 
-        {/* The record (spins while playing) — framer-motion rotation,
+        {/* The record (spins while playing) - framer-motion rotation,
             immune to prefers-reduced-motion killing CSS animations */}
         <motion.span
           className="absolute inset-0 rounded-full shadow-lg ring-1 ring-white/10"
@@ -198,7 +198,7 @@ export function VinylPlayer() {
             ].join(", "),
           }}
         >
-          {/* Center label — album color dot + spindle hole */}
+          {/* Center label - album color dot + spindle hole */}
           <span className="absolute inset-0 m-auto h-6 w-6 rounded-full bg-accent" />
           <span className="absolute inset-0 m-auto h-1.5 w-1.5 rounded-full bg-[#0d0d10]" />
         </motion.span>
@@ -221,7 +221,7 @@ export function VinylPlayer() {
           >
             {/* ===== Turntable: record offset left, tonearm pivots at its edge ===== */}
             <div className="relative mx-4 mt-4 h-44 rounded-xl bg-background/70 border border-border overflow-hidden">
-              {/* Grooves — centered on the platter (96px, 88px).
+              {/* Grooves - centered on the platter (96px, 88px).
                   SVG circles render smoothly (no gradient aliasing),
                   one every 35px like the old repeating gradient. */}
               <svg
@@ -241,7 +241,7 @@ export function VinylPlayer() {
                 ))}
               </svg>
 
-              {/* Record — platter sits left like a real turntable.
+              {/* Record - platter sits left like a real turntable.
                   z-0 keeps it below the tonearm (z-10) so the needle
                   always rides on top of the grooves. */}
               <div className="absolute left-6 top-1/2 z-0 h-36 w-36 -translate-y-1/2">
@@ -262,13 +262,13 @@ export function VinylPlayer() {
                     ].join(", "),
                   }}
                 >
-                  {/* Center label — album color dot + spindle hole */}
+                  {/* Center label - album color dot + spindle hole */}
                   <span className="absolute inset-0 m-auto h-11 w-11 rounded-full bg-accent" />
                   <span className="absolute inset-0 m-auto h-2 w-2 rounded-full bg-[#0d0d10]" />
                 </motion.div>
               </div>
 
-              {/* Tonearm — rotates about its pivot, arm hangs from it.
+              {/* Tonearm - rotates about its pivot, arm hangs from it.
                   Pivot sits just off the record's right edge; the tip
                   lands over the grooves when playing. */}
               <div className="absolute left-[188px] top-6 z-20">
@@ -280,7 +280,7 @@ export function VinylPlayer() {
                 >
                   {/* Counterweight */}
                   <div className="absolute -top-5 left-1/2 h-5 w-1.5 -translate-x-1/2 rounded-full bg-zinc-500" />
-                  {/* Arm — fixed metallic tones so the needle stays visible
+                  {/* Arm - fixed metallic tones so the needle stays visible
                       against the dark vinyl in both themes */}
                   <div className="h-[88px] w-[3px] rounded-full bg-gradient-to-b from-zinc-300 to-zinc-400" />
                   {/* Headshell at the tip */}
@@ -304,21 +304,21 @@ export function VinylPlayer() {
               <div className="flex items-center gap-2">
                 {/* Equalizer bars when playing */}
                 <span className="flex h-3.5 w-4 items-end gap-[2px]">
-                  {spinning
-                    ? [0, 1, 2].map((i) => (
-                        <span
-                          key={i}
-                          className="eq-bar h-full w-[3px] rounded-sm bg-accent"
-                          style={{ animationDelay: `${i * 0.15}s` }}
-                        />
-                      ))
-                    : (
-                      <span className="h-1.5 w-1.5 rounded-full bg-muted/40" />
-                    )}
+                  {spinning ? (
+                    [0, 1, 2].map((i) => (
+                      <span
+                        key={i}
+                        className="eq-bar h-full w-[3px] rounded-sm bg-accent"
+                        style={{ animationDelay: `${i * 0.15}s` }}
+                      />
+                    ))
+                  ) : (
+                    <span className="h-1.5 w-1.5 rounded-full bg-muted/40" />
+                  )}
                 </span>
                 <p className="truncate text-xs font-medium text-foreground">
                   {activeIndex !== null
-                    ? `${music[activeIndex].title} — ${music[activeIndex].artist}`
+                    ? `${music[activeIndex].title} - ${music[activeIndex].artist}`
                     : "Nothing playing"}
                 </p>
               </div>

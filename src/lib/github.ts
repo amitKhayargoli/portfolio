@@ -7,11 +7,11 @@ const GITHUB_API = "https://api.github.com";
  * Uses the GraphQL API which requires an authenticated token.
  */
 export async function fetchContributions(
-  username: string
+  username: string,
 ): Promise<GitHubContribution[]> {
   const token = process.env.GITHUB_TOKEN;
   if (!token) {
-    console.warn("GITHUB_TOKEN not set — returning empty contributions");
+    console.warn("GITHUB_TOKEN not set - returning empty contributions");
     return [];
   }
 
@@ -56,7 +56,8 @@ export async function fetchContributions(
 
   const data = await res.json();
   const weeks =
-    data?.data?.user?.contributionsCollection?.contributionCalendar?.weeks ?? [];
+    data?.data?.user?.contributionsCollection?.contributionCalendar?.weeks ??
+    [];
 
   const levelMap: Record<string, 0 | 1 | 2 | 3 | 4> = {
     NONE: 0,
@@ -93,7 +94,7 @@ export async function fetchRepos(username: string): Promise<GitHubRepo[]> {
           : {}),
       },
       next: { revalidate: 3600 },
-    }
+    },
   );
 
   if (!res.ok) {
@@ -104,17 +105,19 @@ export async function fetchRepos(username: string): Promise<GitHubRepo[]> {
   const repos = await res.json();
   return repos
     .filter((r: { fork: boolean }) => !r.fork)
-    .map((r: {
-      name: string;
-      description: string | null;
-      language: string | null;
-      stargazers_count: number;
-      html_url: string;
-    }) => ({
-      name: r.name,
-      description: r.description ?? "",
-      language: r.language ?? "Unknown",
-      stars: r.stargazers_count,
-      url: r.html_url,
-    }));
+    .map(
+      (r: {
+        name: string;
+        description: string | null;
+        language: string | null;
+        stargazers_count: number;
+        html_url: string;
+      }) => ({
+        name: r.name,
+        description: r.description ?? "",
+        language: r.language ?? "Unknown",
+        stars: r.stargazers_count,
+        url: r.html_url,
+      }),
+    );
 }

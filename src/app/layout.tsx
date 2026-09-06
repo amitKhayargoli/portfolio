@@ -14,11 +14,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Amit Khayargoli — Full Stack Developer",
+  title: "Amit Khayargoli - Full Stack Developer",
   description:
     "Portfolio of Amit Khayargoli, a full-stack developer building simple, functional and user-friendly digital experiences.",
   openGraph: {
-    title: "Amit Khayargoli — Full Stack Developer",
+    title: "Amit Khayargoli - Full Stack Developer",
     description:
       "Portfolio of Amit Khayargoli, a full-stack developer building simple, functional and user-friendly digital experiences.",
     type: "website",
