@@ -20,9 +20,9 @@ export function Header() {
   }, []);
 
   const navLinks = [
-    { label: "Work", href: "#work" },
+    { label: "Projects", href: "#projects" },
     { label: "About", href: "#about" },
-    { label: "Playground", href: "#playground" },
+    // { label: "Playground", href: "#playground" },
     { label: "Contact", href: "#contact" },
   ];
 
@@ -30,7 +30,9 @@ export function Header() {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-40 transition-all duration-300",
-        isScrolled ? "bg-background/80 backdrop-blur-md border-b border-border" : ""
+        isScrolled
+          ? "bg-background/80 backdrop-blur-md border-b border-border"
+          : "",
       )}
     >
       <div className="max-w-3xl mx-auto px-6 md:px-8">

@@ -131,10 +131,10 @@ export function ContributionGraph() {
   };
 
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-6 md:py-8">
       <div className="max-w-3xl mx-auto px-6 md:px-8">
         <motion.h2
-          className="text-xs uppercase tracking-widest text-muted mb-12"
+          className="text-xs uppercase tracking-widest text-muted mb-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -248,7 +248,7 @@ export function ContributionGraph() {
         {/* Top Repos */}
         {repos.length > 0 && (
           <motion.div
-            className="mt-12 space-y-4"
+            className="mt-8 space-y-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}

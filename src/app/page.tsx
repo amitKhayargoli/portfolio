@@ -19,12 +19,12 @@ export default function Home() {
 
       <main>
         <Hero />
-        <About />
-        <ProjectGrid />
-        <ContributionGraph />
+        {/* <About /> */}
         <TechStack />
-        <Playground />
-        <Process />
+        <ContributionGraph />
+        <ProjectGrid />
+        {/* <Playground /> */}
+        {/* <Process /> */}
         <Contact />
       </main>
 

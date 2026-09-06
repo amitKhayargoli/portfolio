@@ -15,7 +15,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32">
+    <section id="contact" className="py-6 md:py-8">
       <div className="max-w-3xl mx-auto px-6 md:px-8">
         <motion.div
           className="max-w-3xl"
@@ -30,7 +30,7 @@ export function Contact() {
         </motion.div>
 
         <motion.div
-          className="mt-12 flex flex-col sm:flex-row items-start gap-6"
+          className="mt-8 flex flex-col sm:flex-row items-start gap-6"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -60,26 +60,6 @@ export function Contact() {
               </>
             )}
           </button>
-        </motion.div>
-
-        <motion.div
-          className="mt-16 flex items-center gap-6"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          {site.contact.links.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-muted hover:text-foreground transition-colors"
-            >
-              {link.label}
-            </a>
-          ))}
         </motion.div>
       </div>
     </section>

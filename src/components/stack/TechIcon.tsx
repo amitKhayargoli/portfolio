@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Technology } from "@/data/technologies";
 import { Magnetic } from "@/components/ui/Magnetic";
 import {
@@ -39,7 +38,6 @@ interface TechIconProps {
 }
 
 export function TechIcon({ technology, index }: TechIconProps) {
-  const [isHovered, setIsHovered] = useState(false);
   const Icon = iconMap[technology.icon] || SiReact;
 
   return (
@@ -50,8 +48,7 @@ export function TechIcon({ technology, index }: TechIconProps) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.4, delay: index * 0.05 }}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+
       >
         <motion.div
           className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center text-muted hover:text-foreground transition-colors"
@@ -61,19 +58,7 @@ export function TechIcon({ technology, index }: TechIconProps) {
         </motion.div>
         <span className="text-xs text-muted">{technology.name}</span>
 
-        <AnimatePresence>
-          {isHovered && (
-            <motion.div
-              className="absolute -bottom-16 left-1/2 -translate-x-1/2 px-3 py-2 bg-card border border-border rounded-lg text-xs text-muted whitespace-nowrap z-10"
-              initial={{ opacity: 0, y: -4 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -4 }}
-              transition={{ duration: 0.15 }}
-            >
-              {technology.description}
-            </motion.div>
-          )}
-        </AnimatePresence>
+
       </motion.div>
     </Magnetic>
   );

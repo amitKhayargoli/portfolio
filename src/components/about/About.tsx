@@ -5,7 +5,7 @@ import { site } from "@/data/site";
 
 export function About() {
   return (
-    <section id="about" className="py-24 md:py-32">
+    <section id="about" className="py-6 md:py-8">
       <div className="max-w-3xl mx-auto px-6 md:px-8">
         <div className="max-w-3xl">
           <motion.h2

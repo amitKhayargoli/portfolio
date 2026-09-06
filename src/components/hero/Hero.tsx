@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { FileText, Mail } from "lucide-react";
 import { FaLinkedinIn, FaGithub } from "react-icons/fa";
+
 import { site } from "@/data/site";
 import { useMousePosition } from "@/hooks/useMousePosition";
 import { Magnetic } from "@/components/ui/Magnetic";
@@ -11,138 +12,175 @@ export function Hero() {
   const mouse = useMousePosition();
 
   return (
-    <section className="min-h-screen flex items-center pt-20 pb-16">
-      <div className="max-w-3xl mx-auto px-6 md:px-8 w-full">
-        <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-8 md:gap-12 items-start">
-          {/* Profile Image */}
+    <section className="pt-20">
+      <div className="mx-auto w-full max-w-3xl px-6 md:px-8">
+        {/* Profile */}
+        <div className="flex items-center gap-5 md:gap-6">
           <motion.div
-            className="relative"
-            style={{
-              x: mouse.x * 6,
-              y: mouse.y * 6,
+            className="relative shrink-0"
+            animate={{
+              x: mouse.x * 4,
+              y: mouse.y * 4,
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 180,
+              damping: 18,
+              mass: 0.4,
             }}
           >
-            <div className="w-24 h-24 md:w-32 md:h-32 rounded-2xl bg-card border border-border overflow-hidden">
-              {/* Replace with your profile image */}
-              {/* <div className="w-full h-full bg-gradient-to-br from-card to-muted/20 flex items-center justify-center">
-                <span className="text-3xl md:text-4xl font-bold text-foreground/20">
-                  AK
-                </span>
-              </div> */}
+            <div className="h-20 w-20 overflow-hidden rounded-xl border border-border bg-card md:h-24 md:w-24">
               <img
-                src="pfp.jpg"
-                alt="Profile"
-                className="w-full h-full object-cover"
+                src="/pfp.jpg"
+                alt="Amit Khayargoli"
+                className="h-full w-full object-cover"
               />
             </div>
-            {/* Availability indicator */}
-            <div className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-accent border-2 border-background" />
+
+            {/* Availability */}
+            <div className="absolute -bottom-1 -right-1 h-4 w-4 rounded-full border-2 border-background bg-accent" />
           </motion.div>
 
-          {/* Content */}
-          <div className="space-y-6">
-            <div>
-              <motion.h1
-                className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
-              >
-                {site.fullName}
-              </motion.h1>
-              <motion.p
-                className="text-lg md:text-xl text-muted mt-2"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.6,
-                  delay: 0.1,
-                  ease: [0.76, 0, 0.24, 1],
-                }}
-              >
-                {site.title}
-              </motion.p>
-              <motion.p
-                className="text-sm text-muted/70 mt-1"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.6,
-                  delay: 0.15,
-                  ease: [0.76, 0, 0.24, 1],
-                }}
-              >
-                {site.location}
-              </motion.p>
-            </div>
+          {/* Identity */}
+          <div>
+            <motion.h1
+              className="text-2xl font-bold tracking-tight md:text-3xl"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.5,
+                ease: [0.76, 0, 0.24, 1],
+              }}
+            >
+              {site.fullName}
+            </motion.h1>
 
             <motion.p
-              className="text-base md:text-lg text-muted max-w-2xl leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
+              className="mt-1 text-base text-muted md:text-lg"
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
-                duration: 0.6,
-                delay: 0.2,
+                duration: 0.5,
+                delay: 0.05,
                 ease: [0.76, 0, 0.24, 1],
               }}
             >
-              {site.description}
+              {site.title}
             </motion.p>
 
-            {/* Social Links */}
-            <motion.div
-              className="flex items-center gap-4 pt-2"
-              initial={{ opacity: 0, y: 20 }}
+            <motion.p
+              className="mt-0.5 text-sm text-muted/70"
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
-                duration: 0.6,
-                delay: 0.3,
+                duration: 0.5,
+                delay: 0.1,
                 ease: [0.76, 0, 0.24, 1],
               }}
             >
-              <Magnetic>
-                <a
-                  href={site.resume}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium border border-border rounded-full text-foreground hover:bg-card transition-colors"
-                >
-                  <FileText size={16} />
-                  Resume
-                </a>
-              </Magnetic>
-              <Magnetic>
-                <a
-                  href={site.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2.5 text-muted hover:text-foreground transition-colors"
-                  aria-label="LinkedIn"
-                >
-                  <FaLinkedinIn size={20} />
-                </a>
-              </Magnetic>
-              <Magnetic>
-                <a
-                  href={site.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2.5 text-muted hover:text-foreground transition-colors"
-                  aria-label="GitHub"
-                >
-                  <FaGithub size={20} />
-                </a>
-              </Magnetic>
-              <Magnetic>
-                <a
-                  href={`mailto:${site.email}`}
-                  className="p-2.5 text-muted hover:text-foreground transition-colors"
-                  aria-label="Email"
-                >
-                  <Mail size={20} />
-                </a>
-              </Magnetic>
-            </motion.div>
+              {site.location}
+            </motion.p>
           </div>
         </div>
+
+        {/* Description */}
+        <motion.p
+          className="mt-7 max-w-2xl text-base leading-7 text-muted md:text-[17px]"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.5,
+            delay: 0.15,
+            ease: [0.76, 0, 0.24, 1],
+          }}
+        >
+          {site.description}
+        </motion.p>
+
+        {/* Actions */}
+        <motion.div
+          className="mt-6 flex items-center gap-3"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.5,
+            delay: 0.2,
+            ease: [0.76, 0, 0.24, 1],
+          }}
+        >
+          {/* Resume */}
+          <Magnetic>
+            <a
+              href={site.resume}
+              className="
+                inline-flex items-center gap-2
+                rounded-md
+                bg-foreground
+                px-4 py-2.5
+                text-sm font-medium
+                text-background
+                transition-all duration-200
+                hover:opacity-85
+                mr-1
+              "
+            >
+              <FileText size={16} />
+              Resume
+            </a>
+          </Magnetic>
+
+          {/* LinkedIn */}
+          <Magnetic>
+            <a
+              href={site.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                rounded-md p-2.5
+                text-muted
+                transition-colors duration-200
+                hover:text-foreground
+              "
+              aria-label="LinkedIn"
+            >
+              <FaLinkedinIn size={19} />
+            </a>
+          </Magnetic>
+
+          {/* GitHub */}
+          <Magnetic>
+            <a
+              href={site.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                rounded-md p-2.5
+                text-muted
+                transition-colors duration-200
+                hover:text-foreground
+              "
+              aria-label="GitHub"
+            >
+              <FaGithub size={19} />
+            </a>
+          </Magnetic>
+
+          {/* Email */}
+          <Magnetic>
+            <a
+              href={`mailto:${site.email}`}
+              className="
+                rounded-md p-2.5
+                text-muted
+                transition-colors duration-200
+                hover:text-foreground
+              "
+              aria-label="Email"
+            >
+              <Mail size={19} />
+            </a>
+          </Magnetic>
+        </motion.div>
       </div>
     </section>
   );
