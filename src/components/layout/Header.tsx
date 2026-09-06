@@ -20,7 +20,7 @@ export function Header() {
   }, []);
 
   const navLinks = [
-    { label: "Projects", href: "#projects" },
+    { label: "Projects", href: "#work" },
     { label: "About", href: "#about" },
     // { label: "Playground", href: "#playground" },
     { label: "Contact", href: "#contact" },
