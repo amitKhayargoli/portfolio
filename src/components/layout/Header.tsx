@@ -19,6 +19,18 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
+
   const navLinks = [
     { label: "Projects", href: "#projects" },
     { label: "About", href: "#about" },
@@ -76,13 +88,13 @@ export function Header() {
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <motion.div
-          className="fixed inset-0 top-16 bg-background z-30 md:hidden"
+          className="fixed inset-0 top-16 bg-background z-30 md:hidden overflow-hidden"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.2 }}
         >
-          <div className="flex flex-col items-center gap-8 pt-16">
+          <div className="flex flex-col items-center justify-center h-full gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.label}
