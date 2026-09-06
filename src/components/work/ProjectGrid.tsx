@@ -6,7 +6,7 @@ import { ProjectCard } from "./ProjectCard";
 
 export function ProjectGrid() {
   return (
-    <section id="work" className="py-6 md:py-8">
+    <section id="projects" className="py-6 md:py-8">
       <div className="max-w-3xl mx-auto px-6 md:px-8">
         <motion.h2
           className="text-xs uppercase tracking-widest text-muted mb-8"
