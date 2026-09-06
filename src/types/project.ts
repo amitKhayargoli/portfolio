@@ -11,5 +11,6 @@ export interface Project {
   lightImage?: string;
   link?: string;
   github?: string;
+  screenshots?: string[];
   featured: boolean;
 }
