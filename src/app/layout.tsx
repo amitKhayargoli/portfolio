@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/ThemeProvider";
-import { ThemeInit } from "@/components/ui/ThemeInit";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,7 +30,11 @@ const themeScript = `
   try {
     var t = localStorage.getItem('theme');
     if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    document.documentElement.classList.add(t);
+    // Remove the default class first so <html> never holds both "dark" and "light"
+    var root = document.documentElement;
+    root.classList.remove('dark', 'light');
+    root.classList.add(t);
+    root.style.colorScheme = t;
   } catch(e) {}
 })();
 `;
@@ -44,16 +46,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} dark h-full antialiased`}
       suppressHydrationWarning
     >
+      <head>
+        {/* Runs synchronously during parsing, before the first paint, so the
+            correct theme class is applied before anything renders (no flash). */}
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="min-h-full flex flex-col">
-        <Script
-          id="theme-init"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{ __html: themeScript }}
-        />
-        <ThemeProvider>
-          <ThemeInit />
-          {children}
-        </ThemeProvider>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );
