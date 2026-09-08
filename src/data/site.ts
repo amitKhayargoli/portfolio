@@ -14,7 +14,8 @@ export const site = {
   email: "khayargoliamit99@gmail.com",
   github: "https://github.com/amitkhayargoli",
   linkedin: "https://linkedin.com/in/amitkhayargoli",
-  resume: "https://docs.google.com/document/d/1Wq61WZpN1PLw6EGIXmtMqfzjtI3ggure4QGmLn1DMEo/edit?usp=sharing",
+  resume:
+    "https://docs.google.com/document/d/1eCbBUfVBexeDT_sQLU5MbsZn2zSa0B7v1qWKV0EltpM/edit?usp=sharing",
   process: [
     {
       step: "01",
