@@ -13,7 +13,7 @@ export const site = {
   },
   email: "khayargoliamit99@gmail.com",
   github: "https://github.com/amitkhayargoli",
-  linkedin: "https://linkedin.com/in/amitkhayargoli",
+  linkedin: "https://np.linkedin.com/in/amit-khayargoli199",
   resume:
     "https://docs.google.com/document/d/1eCbBUfVBexeDT_sQLU5MbsZn2zSa0B7v1qWKV0EltpM/edit?usp=sharing",
   process: [
@@ -43,7 +43,10 @@ export const site = {
     links: [
       { label: "Email", href: "mailto:amit@example.com" },
       { label: "GitHub", href: "https://github.com/amitkhayargoli" },
-      { label: "LinkedIn", href: "https://linkedin.com/in/amitkhayargoli" },
+      {
+        label: "LinkedIn",
+        href: "https://np.linkedin.com/in/amit-khayargoli199",
+      },
       { label: "Resume", href: "#" },
     ],
   },
