@@ -28,7 +28,7 @@ export const projects: Project[] = [
       "/projects/dailo/food-details.png",
       "/projects/dailo/pizza-point.png",
     ],
-    github: "https://github.com/amitKhayargoli/FoodDelivery",
+    github: "https://github.com/amitKhayargoli/Food-Delivery",
     featured: true,
   },
   {
